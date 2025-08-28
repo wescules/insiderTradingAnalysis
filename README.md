@@ -4,7 +4,8 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Code Style](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/psf/black)
 
-Analysis of insider trading using Form 4 SEC disclosures and price history
+This project scrapes insider trades and price history of stocks to examine what are high conviction insider trades. 
+Lets make some bread together!
 
 ## 🔧 Usage
 
