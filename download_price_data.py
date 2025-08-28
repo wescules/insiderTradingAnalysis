@@ -1,10 +1,11 @@
-
-
-
 import yfinance as yf
 import pandas as pd
 import os
+import yaml
 
+with open("config.yaml", 'r') as f:
+    config = yaml.safe_load(f)
+download_period = config['download']['period']
 tickers = set(pd.read_csv('data/insider_trades.csv')['ticker'])
 
 # Create output folder
@@ -24,13 +25,14 @@ for ticker in tickers:
         # Download last 3 months of daily price data
         df = yf.download(
             ticker,
-            period="10y",
+            period=download_period,
             interval="1d",
             auto_adjust=True,
             multi_level_index=False
         )
         
         if df.empty or len(df) <= 5:
+            print(f"No valid data found for {ticker}")
             continue
 
         # Save to CSV with ticker as filename

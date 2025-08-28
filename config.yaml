@@ -4,6 +4,10 @@ output:
   filename: "insider_trades.csv"
   format: "csv"  # Possible values: csv, parquet
 
+# Price Download Settings
+download:
+  period: "10y"    # Possible values: 1d, 1w, 1mo, 3mo, 6mo, 1y, 5y, 10y
+
 # Scraping Settings
 scraping:
   start_year: 2015  # From which year should data be retrieved

@@ -1,42 +1,28 @@
-# 📈 OpenInsider Data Scraper
+# OpenInsider Data Analysis
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Code Style](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/psf/black)
 
-A robust Python scraper for collecting insider trading data from openinsider.com.
+Analysis of insider trading using Form 4 SEC disclosures and price history
 
-## ✨ Features
+## 🔧 Usage
 
-- Multi-threaded data collection for high performance
-- Intelligent caching system to minimize server load
-- Configurable filters for transaction types and values
-- Flexible data export in CSV and Parquet formats
-- Comprehensive logging and error handling
-- Automatic retry mechanism for failed requests
-- Progress tracking with progress bar
-- Docker support for easy deployment
-
-## 🚀 Installation
-
-1. Clone the repository:
+1. Run the scraper:
 ```bash
-git clone git@github.com:sd3v/openinsiderData.git
-cd openinsiderData
+python openinsider_scraper.py
 ```
-
-2. Create and activate a virtual environment:
+2. Download price history for all ticker symbols:
 ```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or
-venv\Scripts\activate  # Windows
+python download_price_data.py
 ```
-
-3. Install dependencies:
+3. Compute returns of all trades:
 ```bash
-pip install -r requirements.txt
+python compute_returns.py
 ```
+4. Analyze data in the Jupyter Notebook:
+
+
 
 ## ⚙️ Configuration
 
@@ -88,55 +74,3 @@ cache:
   directory: .cache    # Cache directory
   max_age: 24         # Cache max age in hours
 ```
-
-## 🔧 Usage
-
-Run the scraper:
-```bash
-python openinsider_scraper.py
-```
-
-## 🐳 Docker Support
-
-Build the container:
-```bash
-docker build -t openinsider-scraper .
-```
-
-Run the container:
-```bash
-docker run -v $(pwd)/data:/app/data openinsider-scraper
-```
-
-## 💼 Transaction Types
-
-Available transaction types:
-- P - Purchase
-- S - Sale
-- F - Tax
-- D - Disposition
-- G - Gift
-- X - Exercise
-- M - Options Exercise
-- C - Conversion
-- W - Will/Inheritance
-- H - Holdings
-- O - Other
-
-## 👥 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## 🔍 Troubleshooting
-
-- If you encounter rate limiting, adjust the `max_workers` setting
-- For memory issues, try using Parquet format for large datasets
-- Check the log file for detailed error messages
-
-## ⚠️ Disclaimer
-
-This tool is for educational purposes only. Ensure you comply with the website's terms of service and local regulations when scraping data.
